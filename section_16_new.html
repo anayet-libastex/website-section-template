@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced UI Web Components Hub - Full Version</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-[#09090b] text-gray-100 font-sans antialiased selection:bg-violet-500 selection:text-white">
+
+  <div class="fixed top-0 left-0 lg:left-72 right-0 h-1 bg-zinc-800 z-50">
+    <div id="scrollProgressBar" class="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 w-0 transition-all duration-100"></div>
+  </div>
+
+  <aside class="fixed top-0 left-0 h-screen w-72 bg-zinc-950 border-r border-zinc-800/80 hidden lg:flex flex-col z-40">
+    <div class="p-6 border-b border-zinc-800/80">
+      <div class="flex items-center gap-2.5">
+        <span class="text-2xl">⚡</span>
+        <h1 class="font-display font-bold text-xl tracking-tight text-white">
+          Dev<span class="text-violet-500">Sections</span><span class="text-xs font-mono text-zinc-500 font-normal ml-1">v3.0</span>
+        </h1>
+      </div>
+      <p class="text-xs text-zinc-400 mt-1.5">Tailwind CSS & JavaScript Master Components</p>
+    </div>
+    
+    <nav class="flex-1 overflow-y-auto p-4 space-y-1 no-scrollbar text-sm">
+      <span class="px-3 py-2 text-xs font-semibold text-zinc-500 tracking-wider uppercase block">Core Structure</span>
+      <a href="#hero-section" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>1. Hero Section</span><span class="text-xs font-mono text-zinc-600">UI</span></a>
+      <a href="#about-section" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>2. About Section</span><span class="text-xs font-mono text-zinc-600">Layout</span></a>
+      <a href="#services-section" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>3. Services Section</span><span class="text-xs font-mono text-zinc-600">Grid</span></a>
+      
+      <span class="px-3 py-2 text-xs font-semibold text-zinc-500 tracking-wider uppercase block pt-4">Data Showcase</span>
+      <a href="#portfolio-grid" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>4. Portfolio Grid</span><span class="text-xs font-mono text-zinc-600">Flex</span></a>
+      <a href="#portfolio-filter" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>5. Portfolio Filter</span><span class="text-xs font-mono text-zinc-600">JS State</span></a>
+      <a href="#team-members" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>6. Team Members</span><span class="text-xs font-mono text-zinc-600">Cards</span></a>
+      
+      <span class="px-3 py-2 text-xs font-semibold text-zinc-500 tracking-wider uppercase block pt-4">Business & Cards</span>
+      <a href="#job-listing" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>7. Job Listing Board</span><span class="text-xs font-mono text-zinc-600">Board</span></a>
+      <a href="#freelancer-profile" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>8. Freelancer Card</span><span class="text-xs font-mono text-zinc-600">Profile</span></a>
+      <a href="#gig-pricing" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>9. Gig Pricing Card</span><span class="text-xs font-mono text-zinc-600">Pricing</span></a>
+      
+      <span class="px-3 py-2 text-xs font-semibold text-zinc-500 tracking-wider uppercase block pt-4">Functional UI Modules</span>
+      <a href="#resume-upload" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>10. Resume Upload</span><span class="text-xs font-mono text-zinc-600">Drag/Drop</span></a>
+      <a href="#contact-form" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>11. Contact Form</span><span class="text-xs font-mono text-zinc-600">Form</span></a>
+      <a href="#login-register" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>12. Login/Register UI</span><span class="text-xs font-mono text-zinc-600">Tabs</span></a>
+      
+      <span class="px-3 py-2 text-xs font-semibold text-zinc-500 tracking-wider uppercase block pt-4">Advanced Dashboards</span>
+      <a href="#kanban-board" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>13. Kanban Board</span><span class="text-xs font-mono text-zinc-600">Workflow</span></a>
+      <a href="#notification-center" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>14. Notification Center</span><span class="text-xs font-mono text-zinc-600">Overlay</span></a>
+      <a href="#messaging-ui" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>15. Messaging UI</span><span class="text-xs font-mono text-zinc-600">Chat</span></a>
+      <a href="#mega-footer" class="flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all"><span>16. Mega Footer</span><span class="text-xs font-mono text-zinc-600">Structure</span></a>
+    </nav>
+  </aside>
+
+  <main class="lg:ml-72 min-h-screen p-4 md:p-8 xl:p-12 space-y-16">
+    
+    <header class="max-w-4xl space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-800 text-xs text-violet-400 font-mono rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Complete Components Package Loaded
+      </div>
+      <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight">
+        Custom Dynamic UI Pipeline
+      </h2>
+      <p class="text-sm md:text-base text-zinc-400 leading-relaxed max-w-2xl">
+        Prototypes responsive layout patterns sequentially using strict atomic Tailwind utilities combined with minimalist embedded Vanilla JavaScript state controllers. Click <span class="text-violet-400 font-medium">"Show Component Source Code"</span> on any container block to review clean implementation markup patterns.
+      </p>
+    </header>
+
+    <section id="hero-section" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">01. Hero Section</h3>
+          <p class="text-xs text-zinc-400">High-converting tech layout with bold headlines and dual interactive triggers.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-hero-section')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 md:p-12 bg-zinc-950/40 relative overflow-hidden flex flex-col items-center text-center">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.08)_0%,transparent_70%)]"></div>
+        <div class="max-w-3xl space-y-6 relative z-10">
+          <span class="px-3 py-1 bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-400 rounded-full">Next-Generation Platform Architecture</span>
+          <h1 class="text-4xl md:text-6xl font-display font-black text-white tracking-tight leading-tight">Automate workflows with deep neural metrics</h1>
+          <p class="text-zinc-400 text-sm md:text-base max-w-xl mx-auto">Deploy multi-tenant engine infrastructure streams dynamically engineered with absolute real-time visibility data nodes.</p>
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <button class="px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-sm rounded-xl transition-all shadow-lg shadow-violet-600/20">Deploy to Mainnet</button>
+            <button class="px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 font-semibold text-sm rounded-xl transition-all">Read Documentation</button>
+          </div>
+        </div>
+      </div>
+      <div id="src-hero-section" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 01. HERO SECTION --&gt;
+&lt;div class="relative overflow-hidden flex flex-col items-center text-center bg-zinc-950 py-16 px-6"&gt;
+  &lt;div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.08)_0%,transparent_70%)]"&gt;&lt;/div&gt;
+  &lt;div class="max-w-3xl space-y-6 relative z-10"&gt;
+    &lt;span class="px-3 py-1 bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-400 rounded-full"&gt;Next-Generation Platform Architecture&lt;/span&gt;
+    &lt;h1 class="text-4xl md:text-6xl font-display font-black text-white tracking-tight leading-tight"&gt;Automate workflows with deep neural metrics&lt;/h1&gt;
+    &lt;p class="text-zinc-400 text-sm md:text-base max-w-xl mx-auto"&gt;Deploy multi-tenant engine infrastructure streams dynamically engineered with absolute real-time visibility data nodes.&lt;/p&gt;
+    &lt;div class="flex flex-wrap items-center justify-center gap-4 pt-2"&gt;
+      &lt;button class="px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-sm rounded-xl transition-all shadow-lg shadow-violet-600/20"&gt;Deploy to Mainnet&lt;/button&gt;
+      &lt;button class="px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 font-semibold text-sm rounded-xl transition-all"&gt;Read Documentation&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="about-section" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">02. About Section</h3>
+          <p class="text-xs text-zinc-400">Clean 2-column layout mapping technical team identity statements.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-about-section')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 md:p-12 bg-zinc-950/40">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+          <div class="space-y-4">
+            <h4 class="text-xs font-mono text-violet-400 uppercase tracking-widest">// OUR CORE MISSION</h4>
+            <h3 class="text-2xl md:text-3xl font-display font-bold text-white tracking-tight">Decentralizing global network operations clusters</h3>
+            <p class="text-zinc-400 text-xs leading-relaxed">Founded by core engineers in 2024, our architecture framework powers next-gen cloud systems with mathematically absolute isolation guarantees natively built into core layers.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl">
+              <div class="text-xl font-display font-bold text-white">4.2M+</div>
+              <div class="text-[11px] text-zinc-500 font-medium uppercase tracking-wider mt-1">Active Queries/s</div>
+            </div>
+            <div class="p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl">
+              <div class="text-xl font-display font-bold text-violet-400">99.999%</div>
+              <div class="text-[11px] text-zinc-500 font-medium uppercase tracking-wider mt-1">Uptime Delivery</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="src-about-section" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 02. ABOUT SECTION --&gt;
+&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto py-6"&gt;
+  &lt;div class="space-y-4"&gt;
+    &lt;h4 class="text-xs font-mono text-violet-400 uppercase tracking-widest"&gt;// OUR CORE MISSION&lt;/h4&gt;
+    &lt;h3 class="text-2xl md:text-3xl font-display font-bold text-white tracking-tight"&gt;Decentralizing global network operations clusters&lt;/h3&gt;
+    &lt;p class="text-zinc-400 text-xs leading-relaxed"&gt;Founded by core engineers in 2024, our architecture framework powers next-gen cloud systems with mathematically absolute isolation guarantees natively built into core layers.&lt;/p>
+  &lt;/div&gt;
+  &lt;div class="grid grid-cols-2 gap-4"&gt;
+    &lt;div class="p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl"&gt;
+      &lt;div class="text-xl font-display font-bold text-white"&gt;4.2M+&lt;/div&gt;
+      &lt;div class="text-[11px] text-zinc-500 font-medium uppercase tracking-wider mt-1"&gt;Active Queries/s&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl"&gt;
+      &lt;div class="text-xl font-display font-bold text-violet-400"&gt;99.999%&lt;/div&gt;
+      &lt;div class="text-[11px] text-zinc-500 font-medium uppercase tracking-wider mt-1"&gt;Uptime Delivery&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="services-section" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">03. Services Section</h3>
+          <p class="text-xs text-zinc-400">Robust 3-column microservice feature card architecture layout patterns.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-services-section')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div class="p-6 bg-zinc-900 border border-zinc-800/80 rounded-xl hover:border-violet-500/40 transition-all group">
+            <span class="text-xl p-2.5 bg-zinc-950 rounded-lg inline-block mb-4 group-hover:text-violet-400 transition-colors">📦</span>
+            <h4 class="font-display font-bold text-white text-sm">Edge Micro-Caching</h4>
+            <p class="text-zinc-400 text-xs mt-1.5 leading-relaxed">Isolate stateful operational parameters into static regional static caches automatically.</p>
+          </div>
+          <div class="p-6 bg-zinc-900 border border-zinc-800/80 rounded-xl hover:border-violet-500/40 transition-all group">
+            <span class="text-xl p-2.5 bg-zinc-950 rounded-lg inline-block mb-4 group-hover:text-violet-400 transition-colors">🛡️</span>
+            <h4 class="font-display font-bold text-white text-sm">Zero-Knowledge Guard</h4>
+            <p class="text-zinc-400 text-xs mt-1.5 leading-relaxed">Cryptographically enforce structural metadata assertions directly inside edge pipes.</p>
+          </div>
+          <div class="p-6 bg-zinc-900 border border-zinc-800/80 rounded-xl hover:border-violet-500/40 transition-all group">
+            <span class="text-xl p-2.5 bg-zinc-950 rounded-lg inline-block mb-4 group-hover:text-violet-400 transition-colors">📊</span>
+            <h4 class="font-display font-bold text-white text-sm">Pipeline Telemetry</h4>
+            <p class="text-zinc-400 text-xs mt-1.5 leading-relaxed">Stream localized analytics configurations directly into browser monitoring console states.</p>
+          </div>
+        </div>
+      </div>
+      <div id="src-services-section" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 03. SERVICES SECTION --&gt;
+&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto"&gt;
+  &lt;div class="p-6 bg-zinc-900 border border-zinc-800/80 rounded-xl hover:border-violet-500/40 transition-all group"&gt;
+    &lt;span class="text-xl p-2.5 bg-zinc-950 rounded-lg inline-block mb-4 group-hover:text-violet-400 transition-colors"&gt;📦&lt;/span&gt;
+    &lt;h4 class="font-display font-bold text-white text-sm"&gt;Edge Micro-Caching&lt;/h4&gt;
+    &lt;p class="text-zinc-400 text-xs mt-1.5 leading-relaxed"&gt;Isolate stateful operational parameters into static regional static caches automatically.&lt;/p>
+  &lt;/div&gt;
+  &lt;div class="p-6 bg-zinc-900 border border-zinc-800/80 rounded-xl hover:border-violet-500/40 transition-all group"&gt;
+    &lt;span class="text-xl p-2.5 bg-zinc-950 rounded-lg inline-block mb-4 group-hover:text-violet-400 transition-colors"&gt;🛡️&lt;/span&gt;
+    &lt;h4 class="font-display font-bold text-white text-sm"&gt;Zero-Knowledge Guard&lt;/h4&gt;
+    &lt;p class="text-zinc-400 text-xs mt-1.5 leading-relaxed"&gt;Cryptographically enforce structural metadata assertions directly inside edge pipes.&lt;/p>
+  &lt;/div&gt;
+  &lt;div class="p-6 bg-zinc-900 border border-zinc-800/80 rounded-xl hover:border-violet-500/40 transition-all group"&gt;
+    &lt;span class="text-xl p-2.5 bg-zinc-950 rounded-lg inline-block mb-4 group-hover:text-violet-400 transition-colors"&gt;📊&lt;/span&gt;
+    &lt;h4 class="font-display font-bold text-white text-sm"&gt;Pipeline Telemetry&lt;/h4&gt;
+    &lt;p class="text-zinc-400 text-xs mt-1.5 leading-relaxed"&gt;Stream localized analytics configurations directly into browser monitoring console states.&lt;/p>
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="portfolio-grid" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">04. Portfolio Grid</h3>
+          <p class="text-xs text-zinc-400">Grid displaying production interface modules featuring structural code overlay mockups.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-portfolio-grid')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div class="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden cursor-pointer">
+            <div class="h-40 bg-gradient-to-br from-violet-900/40 to-zinc-950 border-b border-zinc-800 flex items-center justify-center p-4">
+              <span class="font-mono text-[11px] text-violet-400 group-hover:scale-105 transition-transform">// interface_system.wasm</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-display font-bold text-sm text-white">Quantum Dashboard Engine</h4>
+              <p class="text-zinc-500 text-xs mt-0.5">High frequency analytics system design matrix layout blueprints.</p>
+            </div>
+          </div>
+          <div class="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden cursor-pointer">
+            <div class="h-40 bg-gradient-to-br from-fuchsia-900/40 to-zinc-950 border-b border-zinc-800 flex items-center justify-center p-4">
+              <span class="font-mono text-[11px] text-fuchsia-400 group-hover:scale-105 transition-transform">// ledger_pipeline.go</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-display font-bold text-sm text-white">Hyperledger Protocol Hub</h4>
+              <p class="text-zinc-500 text-xs mt-0.5">Automated programmatic immutable multi-tenant transaction layer nodes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="src-portfolio-grid" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 04. PORTFOLIO GRID --&gt;
+&lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto"&gt;
+  &lt;div class="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden cursor-pointer"&gt;
+    &lt;div class="h-40 bg-gradient-to-br from-violet-900/40 to-zinc-950 border-b border-zinc-800 flex items-center justify-center p-4"&gt;
+      &lt;span class="font-mono text-[11px] text-violet-400 group-hover:scale-105 transition-transform"&gt;// interface_system.wasm&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="p-4"&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white"&gt;Quantum Dashboard Engine&lt;/h4&gt;
+      &lt;p class="text-zinc-500 text-xs mt-0.5"&gt;High frequency analytics system design matrix layout blueprints.&lt;/p>
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="group bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden cursor-pointer"&gt;
+    &lt;div class="h-40 bg-gradient-to-br from-fuchsia-900/40 to-zinc-950 border-b border-zinc-800 flex items-center justify-center p-4"&gt;
+      &lt;span class="font-mono text-[11px] text-fuchsia-400 group-hover:scale-105 transition-transform"&gt;// ledger_pipeline.go&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="p-4"&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white"&gt;Hyperledger Protocol Hub&lt;/h4&gt;
+      &lt;p class="text-zinc-500 text-xs mt-0.5"&gt;Automated programmatic immutable multi-tenant transaction layer nodes.&lt;/p>
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="portfolio-filter" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">05. Portfolio Filter (JavaScript State Control)</h3>
+          <p class="text-xs text-zinc-400">Dynamic vanilla JS node categorical filtering system parsing structural data datasets identifiers.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-portfolio-filter')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40 space-y-6">
+        <div class="flex flex-wrap items-center justify-center gap-2 border-b border-zinc-800 pb-4 max-w-xl mx-auto">
+          <button onclick="filterPortfolioElements(this, 'all')" class="port-filter-btn px-3 py-1 bg-violet-600 text-white rounded-lg text-xs font-semibold transition-all">All Projects</button>
+          <button onclick="filterPortfolioElements(this, 'core')" class="port-filter-btn px-3 py-1 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold transition-all">Core Engine</button>
+          <button onclick="filterPortfolioElements(this, 'mesh')" class="port-filter-btn px-3 py-1 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold transition-all">Mesh Layer</button>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div class="port-item-card p-4 bg-zinc-900 border border-zinc-800 rounded-xl" data-category="core">
+            <span class="text-xs font-mono text-violet-400">Core Engine</span>
+            <h4 class="font-display font-bold text-sm text-white mt-1">Validator V8 Pipeline</h4>
+          </div>
+          <div class="port-item-card p-4 bg-zinc-900 border border-zinc-800 rounded-xl" data-category="mesh">
+            <span class="text-xs font-mono text-amber-400">Mesh Layer</span>
+            <h4 class="font-display font-bold text-sm text-white mt-1">P2P Routing Matrix</h4>
+          </div>
+          <div class="port-item-card p-4 bg-zinc-900 border border-zinc-800 rounded-xl" data-category="core">
+            <span class="text-xs font-mono text-violet-400">Core Engine</span>
+            <h4 class="font-display font-bold text-sm text-white mt-1">Memory Arena Safe Alloc</h4>
+          </div>
+        </div>
+      </div>
+      <script>
+        function filterPortfolioElements(btn, targetCat) {
+          document.querySelectorAll('.port-filter-btn').forEach(b => b.className = "port-filter-btn px-3 py-1 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold transition-all");
+          btn.className = "port-filter-btn px-3 py-1 bg-violet-600 text-white rounded-lg text-xs font-semibold transition-all";
+          document.querySelectorAll('.port-item-card').forEach(card => {
+            if(targetCat === 'all' || card.getAttribute('data-category') === targetCat) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        }
+      </script>
+      <div id="src-portfolio-filter" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 05. PORTFOLIO FILTER UI --&gt;
+&lt;div class="space-y-6"&gt;
+  &lt;div class="flex flex-wrap items-center justify-center gap-2 border-b border-zinc-800 pb-4 max-w-xl mx-auto"&gt;
+    &lt;button onclick="filterPortfolioElements(this, 'all')" class="port-filter-btn px-3 py-1 bg-violet-600 text-white rounded-lg text-xs font-semibold transition-all"&gt;All Projects&lt;/button&gt;
+    &lt;button onclick="filterPortfolioElements(this, 'core')" class="port-filter-btn px-3 py-1 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold transition-all"&gt;Core Engine&lt;/button&gt;
+    &lt;button onclick="filterPortfolioElements(this, 'mesh')" class="port-filter-btn px-3 py-1 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold transition-all"&gt;Mesh Layer&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto"&gt;
+    &lt;div class="port-item-card p-4 bg-zinc-900 border border-zinc-800 rounded-xl" data-category="core"&gt;
+      &lt;span class="text-xs font-mono text-violet-400"&gt;Core Engine&lt;/span&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white mt-1"&gt;Validator V8 Pipeline&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div class="port-item-card p-4 bg-zinc-900 border border-zinc-800 rounded-xl" data-category="mesh"&gt;
+      &lt;span class="text-xs font-mono text-amber-400"&gt;Mesh Layer&lt;/span&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white mt-1"&gt;P2P Routing Matrix&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div class="port-item-card p-4 bg-zinc-900 border border-zinc-800 rounded-xl" data-category="core"&gt;
+      &lt;span class="text-xs font-mono text-violet-400"&gt;Core Engine&lt;/span&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white mt-1"&gt;Memory Arena Safe Alloc&lt;/h4&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function filterPortfolioElements(btn, targetCat) {
+  document.querySelectorAll('.port-filter-btn').forEach(b =&gt; b.className = "port-filter-btn px-3 py-1 text-zinc-400 hover:text-white rounded-lg text-xs font-semibold transition-all");
+  btn.className = "port-filter-btn px-3 py-1 bg-violet-600 text-white rounded-lg text-xs font-semibold transition-all";
+  document.querySelectorAll('.port-item-card').forEach(card =&gt; {
+    if(targetCat === 'all' || card.getAttribute('data-category') === targetCat) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="team-members" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">06. Team Members Section</h3>
+          <p class="text-xs text-zinc-400">Minimalist typography-driven professional profiles cards presentation.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-team-members')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div class="text-center p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl">
+            <div class="w-16 h-16 bg-gradient-to-tr from-violet-600 to-fuchsia-600 rounded-full mx-auto mb-3 flex items-center justify-center font-mono font-bold text-white text-sm">AK</div>
+            <h4 class="font-display font-bold text-sm text-white">Alex Kendrick</h4>
+            <p class="text-zinc-500 text-[11px] font-mono mt-0.5">Principal Infrastructure Architect</p>
+          </div>
+          <div class="text-center p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl">
+            <div class="w-16 h-16 bg-gradient-to-tr from-emerald-600 to-cyan-600 rounded-full mx-auto mb-3 flex items-center justify-center font-mono font-bold text-white text-sm">ES</div>
+            <h4 class="font-display font-bold text-sm text-white">Elena Rostova</h4>
+            <p class="text-zinc-500 text-[11px] font-mono mt-0.5">Lead Cryptography Scientist</p>
+          </div>
+          <div class="text-center p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl">
+            <div class="w-16 h-16 bg-gradient-to-tr from-amber-600 to-orange-600 rounded-full mx-auto mb-3 flex items-center justify-center font-mono font-bold text-white text-sm">MT</div>
+            <h4 class="font-display font-bold text-sm text-white">Marcus Vance</h4>
+            <p class="text-zinc-500 text-[11px] font-mono mt-0.5">Distributed Systems Engineer</p>
+          </div>
+        </div>
+      </div>
+      <div id="src-team-members" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 06. TEAM MEMBERS SECTION --&gt;
+&lt;div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto"&gt;
+  &lt;div class="text-center p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl"&gt;
+    &lt;div class="w-16 h-16 bg-gradient-to-tr from-violet-600 to-fuchsia-600 rounded-full mx-auto mb-3 flex items-center justify-center font-mono font-bold text-white text-sm"&gt;AK&lt;/div&gt;
+    &lt;h4 class="font-display font-bold text-sm text-white"&gt;Alex Kendrick&lt;/h4&gt;
+    &lt;p class="text-zinc-500 text-[11px] font-mono mt-0.5"&gt;Principal Infrastructure Architect&lt;/p>
+  &lt;/div&gt;
+  &lt;div class="text-center p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl"&gt;
+    &lt;div class="w-16 h-16 bg-gradient-to-tr from-emerald-600 to-cyan-600 rounded-full mx-auto mb-3 flex items-center justify-center font-mono font-bold text-white text-sm"&gt;ES&lt;/div&gt;
+    &lt;h4 class="font-display font-bold text-sm text-white"&gt;Elena Rostova&lt;/h4&gt;
+    &lt;p class="text-zinc-500 text-[11px] font-mono mt-0.5"&gt;Lead Cryptography Scientist&lt;/p>
+  &lt;/div>
+  &lt;div class="text-center p-4 bg-zinc-900 border border-zinc-800/60 rounded-xl"&gt;
+    &lt;div class="w-16 h-16 bg-gradient-to-tr from-amber-600 to-orange-600 rounded-full mx-auto mb-3 flex items-center justify-center font-mono font-bold text-white text-sm"&gt;MT&lt;/div&gt;
+    &lt;h4 class="font-display font-bold text-sm text-white"&gt;Marcus Vance&lt;/h4&gt;
+    &lt;p class="text-zinc-500 text-[11px] font-mono mt-0.5"&gt;Distributed Systems Engineer&lt;/p>
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="job-listing" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">07. Job Listing Board</h3>
+          <p class="text-xs text-zinc-400">Interactive operational career streams board with meta tag layout properties.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-job-listing')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40 space-y-3">
+        <div class="max-w-3xl mx-auto bg-zinc-900 border border-zinc-800/80 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4 hover:border-zinc-700 transition-colors cursor-pointer">
+          <div class="space-y-1">
+            <h4 class="font-display font-bold text-sm text-white">Rust Systems Kernel Engineer</h4>
+            <div class="flex flex-wrap items-center gap-3 text-[11px] font-mono text-zinc-500">
+              <span class="text-violet-400">✦ Remote (US/EU)</span>
+              <span>• Full-Time</span>
+              <span>• $160k - $210k Equity</span>
+            </div>
+          </div>
+          <button class="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-xs font-semibold text-white rounded-lg transition-colors">Apply Node</button>
+        </div>
+        <div class="max-w-3xl mx-auto bg-zinc-900 border border-zinc-800/80 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4 hover:border-zinc-700 transition-colors cursor-pointer">
+          <div class="space-y-1">
+            <h4 class="font-display font-bold text-sm text-white">Frontend Web3 Integration Developer</h4>
+            <div class="flex flex-wrap items-center gap-3 text-[11px] font-mono text-zinc-500">
+              <span class="text-emerald-400">✦ Distributed Asia</span>
+              <span>• Full-Time</span>
+              <span>• $120k - $150k</span>
+            </div>
+          </div>
+          <button class="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-xs font-semibold text-white rounded-lg transition-colors">Apply Node</button>
+        </div>
+      </div>
+      <div id="src-job-listing" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 07. JOB LISTING BOARD --&gt;
+&lt;div class="space-y-3"&gt;
+  &lt;div class="max-w-3xl mx-auto bg-zinc-900 border border-zinc-800/80 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4 hover:border-zinc-700 transition-colors cursor-pointer"&gt;
+    &lt;div class="space-y-1"&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white"&gt;Rust Systems Kernel Engineer&lt;/h4&gt;
+      &lt;div class="flex flex-wrap items-center gap-3 text-[11px] font-mono text-zinc-500"&gt;
+        &lt;span class="text-violet-400"&gt;✦ Remote (US/EU)&lt;/span&gt;
+        &lt;span&gt;• Full-Time&lt;/span&gt;
+        &lt;span&gt;• $160k - $210k Equity&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-xs font-semibold text-white rounded-lg transition-colors"&gt;Apply Node&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="max-w-3xl mx-auto bg-zinc-900 border border-zinc-800/80 p-4 rounded-xl flex flex-wrap items-center justify-between gap-4 hover:border-zinc-700 transition-colors cursor-pointer"&gt;
+    &lt;div class="space-y-1"&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white"&gt;Frontend Web3 Integration Developer&lt;/h4&gt;
+      &lt;div class="flex flex-wrap items-center gap-3 text-[11px] font-mono text-zinc-500"&gt;
+        &lt;span class="text-emerald-400"&gt;✦ Distributed Asia&lt;/span&gt;
+        &lt;span&gt;• Full-Time&lt;/span&gt;
+        &lt;span&gt;• $120k - $150k&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-xs font-semibold text-white rounded-lg transition-colors"&gt;Apply Node&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="freelancer-profile" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">08. Freelancer Profile Card</h3>
+          <p class="text-xs text-zinc-400">Compact independent consultant metadata display module card layout structure.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-freelancer-profile')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40 flex items-center justify-center">
+        <div class="w-full max-w-xs bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl flex items-center justify-center font-mono font-bold text-white text-xs">JD</div>
+            <div>
+              <h4 class="font-display font-bold text-sm text-white flex items-center gap-1.5">Julian Drake <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block"></span></h4>
+              <p class="text-zinc-500 text-[11px] font-mono">Full-Stack Interface Specialist</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-1.5 text-[10px] font-mono">
+            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 border border-zinc-800 rounded">TailwindCSS</span>
+            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 border border-zinc-800 rounded">Node.js</span>
+            <span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 border border-zinc-800 rounded">TypeScript</span>
+          </div>
+          <div class="border-t border-zinc-800/80 pt-3 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-zinc-500 block">BASE RATE</span>
+              <span class="font-mono font-bold text-white mt-0.5 block">$85/hr</span>
+            </div>
+            <button class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-xs rounded-lg transition-colors">Hire Operator</button>
+          </div>
+        </div>
+      </div>
+      <div id="src-freelancer-profile" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 08. FREELANCER PROFILE CARD --&gt;
+&lt;div class="w-full max-w-xs bg-zinc-900 border border-zinc-800 p-5 rounded-2xl space-y-4"&gt;
+  &lt;div class="flex items-center gap-3.5"&gt;
+    &lt;div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl flex items-center justify-center font-mono font-bold text-white text-xs"&gt;JD&lt;/div&gt;
+    &lt;div&gt;
+      &lt;h4 class="font-display font-bold text-sm text-white flex items-center gap-1.5"&gt;Julian Drake &lt;span class="w-1.5 h-1.5 bg-emerald-500 rounded-full inline-block"&gt;&lt;/span&gt;&lt;/h4&gt;
+      &lt;p class="text-zinc-500 text-[11px] font-mono"&gt;Full-Stack Interface Specialist&lt;/p>
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="flex flex-wrap gap-1.5 text-[10px] font-mono"&gt;
+    &lt;span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 border border-zinc-800 rounded"&gt;TailwindCSS&lt;/span&gt;
+    &lt;span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 border border-zinc-800 rounded"&gt;Node.js&lt;/span&gt;
+    &lt;span class="px-2 py-0.5 bg-zinc-950 text-zinc-400 border border-zinc-800 rounded"&gt;TypeScript&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="border-t border-zinc-800/80 pt-3 flex items-center justify-between text-xs"&gt;
+    &lt;div&gt;
+      &lt;span class="text-[10px] uppercase font-bold text-zinc-500 block"&gt;BASE RATE&lt;/span&gt;
+      &lt;span class="font-mono font-bold text-white mt-0.5 block"&gt;$85/hr&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white font-semibold text-xs rounded-lg transition-colors"&gt;Hire Operator&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="gig-pricing" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">09. Gig Pricing Card</h3>
+          <p class="text-xs text-zinc-400">Direct tactical value-proposition tier panel for transactional product delivery models.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-gig-pricing')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40 flex items-center justify-center">
+        <div class="w-full max-w-xs bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden relative">
+          <div class="p-5 border-b border-zinc-800/80 space-y-2">
+            <span class="text-[10px] font-mono uppercase font-bold tracking-widest text-violet-400 bg-violet-500/10 border border-violet-500/20 px-2 py-0.5 rounded">STANDARD PACKAGE</span>
+            <h4 class="font-display font-extrabold text-2xl text-white mt-1">$499 <span class="text-xs text-zinc-500 font-normal font-sans">/flat delivery</span></h4>
+            <p class="text-zinc-400 text-xs leading-relaxed">Full complete implementation blueprint pipeline with production-grade utility orchestration mappings.</p>
+          </div>
+          <div class="p-5 bg-zinc-950/40 space-y-4">
+            <ul class="space-y-2 text-xs font-medium text-zinc-300">
+              <li class="flex items-center gap-2"><span class="text-violet-500">✓</span> 5 Responsive Core Sections</li>
+              <li class="flex items-center gap-2"><span class="text-violet-500">✓</span> Standard Vanilla JS Controller States</li>
+              <li class="flex items-center gap-2"><span class="text-violet-500">✓</span> 48h Production Delivery Milestone</li>
+            </ul>
+            <button class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-semibold text-xs rounded-xl transition-all shadow-inner">Initiate Order Pipeline</button>
+          </div>
+        </div>
+      </div>
+      <div id="src-gig-pricing" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 09. GIG PRICING CARD --&gt;
+&lt;div class="w-full max-w-xs bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden relative"&gt;
+  &lt;div class="p-5 border-b border-zinc-800/80 space-y-2"&gt;
+    &lt;span class="text-[10px] font-mono uppercase font-bold tracking-widest text-violet-400 bg-violet-500/10 border border-violet-500/20 px-2 py-0.5 rounded"&gt;STANDARD PACKAGE&lt;/span&gt;
+    &lt;h4 class="font-display font-extrabold text-2xl text-white mt-1"&gt;$499 &lt;span class="text-xs text-zinc-500 font-normal font-sans"&gt;/flat delivery&lt;/span&gt;&lt;/h4&gt;
+    &lt;p class="text-zinc-400 text-xs leading-relaxed"&gt;Full complete implementation blueprint pipeline with production-grade utility orchestration mappings.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="p-5 bg-zinc-950/40 space-y-4"&gt;
+    &lt;ul class="space-y-2 text-xs font-medium text-zinc-300"&gt;
+      &lt;li class="flex items-center gap-2"&gt;&lt;span class="text-violet-500"&gt;✓&lt;/span&gt; 5 Responsive Core Sections&lt;/li&gt;
+      &lt;li class="flex items-center gap-2"&gt;&lt;span class="text-violet-500"&gt;✓&lt;/span&gt; Standard Vanilla JS Controller States&lt;/li&gt;
+      &lt;li class="flex items-center gap-2"&gt;&lt;span class="text-violet-500"&gt;✓&lt;/span&gt; 48h Production Delivery Milestone&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;button class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-semibold text-xs rounded-xl transition-all shadow-inner"&gt;Initiate Order Pipeline&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="resume-upload" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">10. Resume Upload (Drag & Drop Active JS)</h3>
+          <p class="text-xs text-zinc-400">Interactive drag zone area handling telemetry upload configurations dynamically.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-resume-upload')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40">
+        <div id="dragDropUploadZone" class="max-w-md mx-auto border-2 border-dashed border-zinc-800 bg-zinc-900/50 p-8 rounded-2xl text-center space-y-2 cursor-pointer hover:border-violet-500/50 hover:bg-zinc-900 transition-all">
+          <span class="text-2xl block">📄</span>
+          <h4 class="font-display font-bold text-sm text-white" id="uploadZoneTitleText">Drag and drop profile asset document</h4>
+          <p class="text-zinc-500 text-[11px] font-mono">Accepts PDF, DOCX formats down up to 10MB limits</p>
+          <input type="file" id="hiddenFileInputElement" class="hidden" accept=".pdf,.docx">
+        </div>
+      </div>
+      <script>
+        const zone = document.getElementById('dragDropUploadZone');
+        const text = document.getElementById('uploadZoneTitleText');
+        const inp = document.getElementById('hiddenFileInputElement');
+        
+        zone.addEventListener('click', () => inp.click());
+        zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('border-violet-500'); });
+        zone.addEventListener('dragleave', () => { zone.classList.remove('border-violet-500'); });
+        zone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          zone.classList.remove('border-violet-500');
+          if(e.dataTransfer.files.length) {
+            text.innerText = "Captured: " + e.dataTransfer.files[0].name;
+            text.classList.add('text-violet-400');
+          }
+        });
+        inp.addEventListener('change', () => {
+          if(inp.files.length) {
+            text.innerText = "Attached: " + inp.files[0].name;
+            text.classList.add('text-violet-400');
+          }
+        });
+      </script>
+      <div id="src-resume-upload" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 10. RESUME UPLOAD (DRAG & DROP) --&gt;
+&lt;div id="dragDropUploadZone" class="max-w-md mx-auto border-2 border-dashed border-zinc-800 bg-zinc-900/50 p-8 rounded-2xl text-center space-y-2 cursor-pointer hover:border-violet-500/50 hover:bg-zinc-900 transition-all"&gt;
+  &lt;span class="text-2xl block"&gt;📄&lt;/span&gt;
+  &lt;h4 class="font-display font-bold text-sm text-white" id="uploadZoneTitleText"&gt;Drag and drop profile asset document&lt;/h4&gt;
+  &lt;p class="text-zinc-500 text-[11px] font-mono"&gt;Accepts PDF, DOCX formats down up to 10MB limits&lt;/p&gt;
+  &lt;input type="file" id="hiddenFileInputElement" class="hidden" accept=".pdf,.docx"&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const zone = document.getElementById('dragDropUploadZone');
+  const text = document.getElementById('uploadZoneTitleText');
+  const inp = document.getElementById('hiddenFileInputElement');
+  
+  zone.addEventListener('click', () =&gt; inp.click());
+  zone.addEventListener('dragover', (e) =&gt; { e.preventDefault(); zone.classList.add('border-violet-500'); });
+  zone.addEventListener('dragleave', () =&gt; { zone.classList.remove('border-violet-500'); });
+  zone.addEventListener('drop', (e) =&gt; {
+    e.preventDefault();
+    zone.classList.remove('border-violet-500');
+    if(e.dataTransfer.files.length) {
+      text.innerText = "Captured: " + e.dataTransfer.files[0].name;
+      text.classList.add('text-violet-400');
+    }
+  });
+  inp.addEventListener('change', () =&gt; {
+    if(inp.files.length) {
+      text.innerText = "Attached: " + inp.files[0].name;
+      text.classList.add('text-violet-400');
+    }
+  });
+&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="contact-form" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">11. Contact Form</h3>
+          <p class="text-xs text-zinc-400">Strictly focused inline transmission grid mapping metadata data fields.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-contact-form')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40">
+        <form onsubmit="event.preventDefault(); alert('Telemetry Payload Fired');" class="max-w-md mx-auto space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">Identity Name</label>
+              <input type="text" required class="w-full bg-zinc-900 border border-zinc-800 focus:border-violet-500 px-3 py-2 text-xs text-white rounded-xl font-medium outline-none transition-all">
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">Network Email</label>
+              <input type="email" required class="w-full bg-zinc-900 border border-zinc-800 focus:border-violet-500 px-3 py-2 text-xs text-white rounded-xl font-medium outline-none transition-all">
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">Message Payload Stream</label>
+            <textarea required rows="4" class="w-full bg-zinc-900 border border-zinc-800 focus:border-violet-500 px-3 py-2 text-xs text-white rounded-xl font-medium outline-none transition-all no-scrollbar resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-2.5 bg-violet-600 hover:bg-violet-500 font-semibold text-xs text-white rounded-xl transition-colors shadow-lg shadow-violet-600/10">Fire Message Payload</button>
+        </form>
+      </div>
+      <div id="src-contact-form" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 11. CONTACT FORM --&gt;
+&lt;form onsubmit="event.preventDefault(); alert('Telemetry Payload Fired');" class="max-w-md mx-auto space-y-4"&gt;
+  &lt;div class="grid grid-cols-2 gap-4"&gt;
+    &lt;div class="space-y-1.5"&gt;
+      &lt;label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block"&gt;Identity Name&lt;/label&gt;
+      &lt;input type="text" required class="w-full bg-zinc-900 border border-zinc-800 focus:border-violet-500 px-3 py-2 text-xs text-white rounded-xl font-medium outline-none transition-all"&gt;
+    &lt;/div&gt;
+    &lt;div class="space-y-1.5"&gt;
+      &lt;label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block"&gt;Network Email&lt;/label&gt;
+      &lt;input type="email" required class="w-full bg-zinc-900 border border-zinc-800 focus:border-violet-500 px-3 py-2 text-xs text-white rounded-xl font-medium outline-none transition-all"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="space-y-1.5"&gt;
+    &lt;label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block"&gt;Message Payload Stream&lt;/label&gt;
+    &lt;textarea required rows="4" class="w-full bg-zinc-900 border border-zinc-800 focus:border-violet-500 px-3 py-2 text-xs text-white rounded-xl font-medium outline-none transition-all no-scrollbar resize-none"&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="w-full py-2.5 bg-violet-600 hover:bg-violet-500 font-semibold text-xs text-white rounded-xl transition-colors shadow-lg shadow-violet-600/10"&gt;Fire Message Payload&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="login-register" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">12. Login / Register UI</h3>
+          <p class="text-xs text-zinc-400">Dynamic state interface toggling form validation modes via simple triggers.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-login-register')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40">
+        <div class="max-w-sm mx-auto bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-6">
+          <div class="flex border-b border-zinc-800 p-1 bg-zinc-950 rounded-xl">
+            <button onclick="switchAuthInterfaceMode(this, 'authLoginFormBlock')" class="auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-violet-600 text-white transition-all">Sign In</button>
+            <button onclick="switchAuthInterfaceMode(this, 'authRegisterFormBlock')" class="auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-300 transition-all">Register</button>
+          </div>
+          
+          <div id="authLoginFormBlock" class="auth-pane-form space-y-4">
+            <div class="space-y-1.5"><input type="email" placeholder="Identity Node Email" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"></div>
+            <div class="space-y-1.5"><input type="password" placeholder="Key Token Pass" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"></div>
+            <button class="w-full py-2.5 bg-violet-600 hover:bg-violet-500 text-xs font-bold text-white rounded-xl transition-colors">Execute Handshake</button>
+          </div>
+          
+          <div id="authRegisterFormBlock" class="auth-pane-form hidden space-y-4">
+            <div class="space-y-1.5"><input type="text" placeholder="Full Identity Label" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"></div>
+            <div class="space-y-1.5"><input type="email" placeholder="Target System Email" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"></div>
+            <div class="space-y-1.5"><input type="password" placeholder="Create Access Key" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"></div>
+            <button class="w-full py-2.5 bg-fuchsia-600 hover:bg-fuchsia-500 text-xs font-bold text-white rounded-xl transition-colors">Provision Credential Block</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        function switchAuthInterfaceMode(btn, targetFormId) {
+          document.querySelectorAll('.auth-toggle-btn').forEach(b => b.className = "auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-300 transition-all");
+          btn.className = "auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-violet-600 text-white transition-all";
+          document.querySelectorAll('.auth-pane-form').forEach(p => p.classList.add('hidden'));
+          document.getElementById(targetFormId).classList.remove('hidden');
+        }
+      </script>
+      <div id="src-login-register" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 12. LOGIN / REGISTER UI --&gt;
+&lt;div class="max-w-sm mx-auto bg-zinc-900 border border-zinc-800 p-6 rounded-2xl space-y-6"&gt;
+  &lt;div class="flex border-b border-zinc-800 p-1 bg-zinc-950 rounded-xl"&gt;
+    &lt;button onclick="switchAuthInterfaceMode(this, 'authLoginFormBlock')" class="auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-violet-600 text-white transition-all"&gt;Sign In&lt;/button&gt;
+    &lt;button onclick="switchAuthInterfaceMode(this, 'authRegisterFormBlock')" class="auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-300 transition-all"&gt;Register&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div id="authLoginFormBlock" class="auth-pane-form space-y-4"&gt;
+    &lt;input type="email" placeholder="Identity Node Email" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"&gt;
+    &lt;input type="password" placeholder="Key Token Pass" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"&gt;
+    &lt;button class="w-full py-2.5 bg-violet-600 hover:bg-violet-500 text-xs font-bold text-white rounded-xl transition-colors"&gt;Execute Handshake&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div id="authRegisterFormBlock" class="auth-pane-form hidden space-y-4"&gt;
+    &lt;input type="text" placeholder="Full Identity Label" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"&gt;
+    &lt;input type="email" placeholder="Target System Email" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"&gt;
+    &lt;input type="password" placeholder="Create Access Key" class="w-full bg-zinc-950 border border-zinc-800 px-3 py-2 text-xs text-white rounded-xl outline-none focus:border-violet-500 transition-colors"&gt;
+    &lt;button class="w-full py-2.5 bg-fuchsia-600 hover:bg-fuchsia-500 text-xs font-bold text-white rounded-xl transition-colors"&gt;Provision Credential Block&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function switchAuthInterfaceMode(btn, targetFormId) {
+  document.querySelectorAll('.auth-toggle-btn').forEach(b =&gt; b.className = "auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg text-zinc-500 hover:text-zinc-300 transition-all");
+  btn.className = "auth-toggle-btn flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-violet-600 text-white transition-all";
+  document.querySelectorAll('.auth-pane-form').forEach(p =&gt; p.classList.add('hidden'));
+  document.getElementById(targetFormId).classList.remove('hidden');
+}
+&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="kanban-board" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">13. Kanban Board</h3>
+          <p class="text-xs text-zinc-400">Task tracking system grouping project metrics layout variables.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-kanban-board')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-4 md:p-6 bg-zinc-950/40">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div class="bg-zinc-900 border border-zinc-800/80 p-3 rounded-xl space-y-2.5">
+            <div class="flex items-center justify-between border-b border-zinc-800 pb-2"><span class="text-xs font-bold text-zinc-400">Backlog Node</span><span class="px-1.5 py-0.5 bg-zinc-950 border border-zinc-800 rounded text-[10px] text-zinc-500 font-mono">02</span></div>
+            <div class="p-3 bg-zinc-950 border border-zinc-800 rounded-lg text-xs font-medium space-y-1"><div>Refactor memory cache allocations</div><span class="text-[10px] font-mono text-zinc-600">#SAFE-01</span></div>
+            <div class="p-3 bg-zinc-950 border border-zinc-800 rounded-lg text-xs font-medium space-y-1"><div>Audit WASM cryptographic bindings</div><span class="text-[10px] font-mono text-zinc-600">#SEC-42</span></div>
+          </div>
+          <div class="bg-zinc-900 border border-zinc-800/80 p-3 rounded-xl space-y-2.5">
+            <div class="flex items-center justify-between border-b border-zinc-800 pb-2"><span class="text-xs font-bold text-violet-400">Active Execution</span><span class="px-1.5 py-0.5 bg-violet-500/10 border border-violet-500/20 rounded text-[10px] text-violet-400 font-mono">01</span></div>
+            <div class="p-3 bg-zinc-950 border border-violet-500/10 rounded-lg text-xs font-medium space-y-1"><div>Deploy regional validation hub network</div><span class="text-[10px] font-mono text-violet-400">#OPS-90</span></div>
+          </div>
+          <div class="bg-zinc-900 border border-zinc-800/80 p-3 rounded-xl space-y-2.5">
+            <div class="flex items-center justify-between border-b border-zinc-800 pb-2"><span class="text-xs font-bold text-emerald-400">Verified Mainnet</span><span class="px-1.5 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded text-[10px] text-emerald-400 font-mono">01</span></div>
+            <div class="p-3 bg-zinc-950 border border-zinc-800 opacity-60 rounded-lg text-xs font-medium space-y-1 line-through text-zinc-500"><div>Compile tailwind configuration templates</div><span class="text-[10px] font-mono text-zinc-600">#DEV-04</span></div>
+          </div>
+        </div>
+      </div>
+      <div id="src-kanban-board" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 13. KANBAN BOARD --&gt;
+&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"&gt;
+  &lt;div class="bg-zinc-900 border border-zinc-800/80 p-3 rounded-xl space-y-2.5"&gt;
+    &lt;div class="flex items-center justify-between border-b border-zinc-800 pb-2"&gt;&lt;span class="text-xs font-bold text-zinc-400"&gt;Backlog Node&lt;/span&gt;&lt;span class="px-1.5 py-0.5 bg-zinc-950 border border-zinc-800 rounded text-[10px] text-zinc-500 font-mono"&gt;02&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="p-3 bg-zinc-950 border border-zinc-800 rounded-lg text-xs font-medium space-y-1"&gt;&lt;div&gt;Refactor memory cache allocations&lt;/div&gt;&lt;span class="text-[10px] font-mono text-zinc-600"&gt;#SAFE-01&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="p-3 bg-zinc-950 border border-zinc-800 rounded-lg text-xs font-medium space-y-1"&gt;&lt;div&gt;Audit WASM cryptographic bindings&lt;/div&gt;&lt;span class="text-[10px] font-mono text-zinc-600"&gt;#SEC-42&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="bg-zinc-900 border border-zinc-800/80 p-3 rounded-xl space-y-2.5"&gt;
+    &lt;div class="flex items-center justify-between border-b border-zinc-800 pb-2"&gt;&lt;span class="text-xs font-bold text-violet-400"&gt;Active Execution&lt;/span&gt;&lt;span class="px-1.5 py-0.5 bg-violet-500/10 border border-violet-500/20 rounded text-[10px] text-violet-400 font-mono"&gt;01&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="p-3 bg-zinc-950 border border-violet-500/10 rounded-lg text-xs font-medium space-y-1"&gt;&lt;div&gt;Deploy regional validation hub network&lt;/div&gt;&lt;span class="text-[10px] font-mono text-violet-400"&gt;#OPS-90&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="bg-zinc-900 border border-zinc-800/80 p-3 rounded-xl space-y-2.5"&gt;
+    &lt;div class="flex items-center justify-between border-b border-zinc-800 pb-2"&gt;&lt;span class="text-xs font-bold text-emerald-400"&gt;Verified Mainnet&lt;/span&gt;&lt;span class="px-1.5 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded text-[10px] text-emerald-400 font-mono"&gt;01&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="p-3 bg-zinc-950 border border-zinc-800 opacity-60 rounded-lg text-xs font-medium space-y-1 line-through text-zinc-500"&gt;&lt;div&gt;Compile tailwind configuration templates&lt;/div&gt;&lt;span class="text-[10px] font-mono text-zinc-600"&gt;#DEV-04&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="notification-center" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">14. Notification Center</h3>
+          <p class="text-xs text-zinc-400">Overlay popover container mimicking system stream updates alerts handles.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-notification-center')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 bg-zinc-950/40 flex flex-col items-center justify-center space-y-4">
+        <button onclick="toggleNotificationBoxOverlay()" class="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-bold text-white rounded-xl transition-all relative">
+          Toggle Notification Feed <span class="absolute -top-1.5 -right-1 w-2 h-2 rounded-full bg-violet-500 animate-ping"></span>
+        </button>
+        
+        <div id="telemetryNotificationOverlayBox" class="w-full max-w-xs bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl transition-all">
+          <div class="p-3 bg-zinc-950 border-b border-zinc-800/80 flex items-center justify-between"><span class="text-xs font-bold text-white">System Feed Alerts</span><span class="text-[10px] font-mono text-zinc-500">2 Actions Pending</span></div>
+          <div class="divide-y divide-zinc-800 text-xs">
+            <div class="p-3 flex items-start gap-2.5 hover:bg-zinc-950/50 cursor-pointer">
+              <span class="text-emerald-400 mt-0.5">◈</span>
+              <div class="space-y-0.5">
+                <div class="font-semibold text-white">Node Replication Complete</div>
+                <p class="text-zinc-500 text-[11px]">Region Asia-East matrix verified via hash 0x7a</p>
+              </div>
+            </div>
+            <div class="p-3 flex items-start gap-2.5 hover:bg-zinc-950/50 cursor-pointer">
+              <span class="text-amber-400 mt-0.5">⚠️</span>
+              <div class="space-y-0.5">
+                <div class="font-semibold text-white">High Pipeline Memory Load</div>
+                <p class="text-zinc-500 text-[11px]">Core allocation running past 92% SLA index parameters</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function toggleNotificationBoxOverlay() {
+          const box = document.getElementById('telemetryNotificationOverlayBox');
+          box.classList.toggle('hidden');
+        }
+      </script>
+      <div id="src-notification-center" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 14. NOTIFICATION CENTER --&gt;
+&lt;button onclick="toggleNotificationBoxOverlay()" class="px-4 py-2 bg-zinc-900 border border-zinc-800 text-xs font-bold text-white rounded-xl relative"&gt;Toggle Notification Feed&lt;/button&gt;
+
+&lt;div id="telemetryNotificationOverlayBox" class="w-full max-w-xs bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl"&gt;
+  &lt;div class="p-3 bg-zinc-950 border-b border-zinc-800/80 flex items-center justify-between"&gt;&lt;span class="text-xs font-bold text-white"&gt;System Feed Alerts&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="divide-y divide-zinc-880 text-xs"&gt;
+    &lt;div class="p-3 flex items-start gap-2.5 hover:bg-zinc-950/50"&gt;
+      &lt;span class="text-emerald-400"&gt;◈&lt;/span&gt;
+      &lt;div&gt;
+        &lt;div class="font-semibold text-white"&gt;Node Replication Complete&lt;/div&gt;
+        &lt;p class="text-zinc-500 text-[11px]"&gt;Region Asia-East matrix verified via hash 0x7a&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="p-3 flex items-start gap-2.5 hover:bg-zinc-950/50"&gt;
+      &lt;span class="text-amber-400"&gt;⚠️&lt;/span&gt;
+      &lt;div&gt;
+        &lt;div class="font-semibold text-white"&gt;High Pipeline Memory Load&lt;/div&gt;
+        &lt;p class="text-zinc-500 text-[11px]"&gt;Core allocation running past 92% SLA index parameters&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggleNotificationBoxOverlay() {
+  const box = document.getElementById('telemetryNotificationOverlayBox');
+  box.classList.toggle('hidden');
+}
+&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="messaging-ui" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">15. Messaging UI</h3>
+          <p class="text-xs text-zinc-400">Asymmetric conversational layout stream mapping dynamic user inputs.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-messaging-ui')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-4 bg-zinc-950/40">
+        <div class="w-full max-w-md mx-auto border border-zinc-800 bg-zinc-900 rounded-xl overflow-hidden flex flex-col h-64 justify-between">
+          <div class="p-3 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between"><span class="text-xs font-bold text-white">Secure Tunnel #009</span><span class="w-2 h-2 rounded-full bg-emerald-500"></span></div>
+          <div class="p-4 overflow-y-auto space-y-3 no-scrollbar text-[11px] font-medium flex-1">
+            <div class="flex items-start gap-2 max-w-[80%]">
+              <div class="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center text-[9px] font-mono font-bold">OP</div>
+              <div class="p-2 bg-zinc-950 border border-zinc-800 text-zinc-300 rounded-xl rounded-tl-none">Have you pushed the latest hash variables down to test environments?</div>
+            </div>
+            <div class="flex items-start gap-2 max-w-[80%] ml-auto flex-row-reverse">
+              <div class="w-6 h-6 rounded bg-violet-600 flex items-center justify-center text-[9px] font-mono font-bold text-white">ME</div>
+              <div class="p-2 bg-violet-600 text-white rounded-xl rounded-tr-none">Yes, deployment handshake confirmed on chain block #9012.</div>
+            </div>
+          </div>
+          <div class="p-2 bg-zinc-950 border-t border-zinc-800 flex items-center gap-2">
+            <input type="text" placeholder="Transmit operational statement strings..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs outline-none focus:border-violet-500 text-white">
+            <button class="px-3 py-1.5 bg-zinc-800 border border-zinc-700 text-xs text-white rounded-lg font-bold">Send</button>
+          </div>
+        </div>
+      </div>
+      <div id="src-messaging-ui" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 15. MESSAGING UI --&gt;
+&lt;div class="w-full max-w-md mx-auto border border-zinc-800 bg-zinc-900 rounded-xl overflow-hidden flex flex-col h-64 justify-between"&gt;
+  &lt;div class="p-3 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between"&gt;&lt;span class="text-xs font-bold text-white"&gt;Secure Tunnel #009&lt;/span&gt;&lt;span class="w-2 h-2 rounded-full bg-emerald-500"&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="p-4 overflow-y-auto space-y-3 no-scrollbar text-[11px] font-medium flex-1"&gt;
+    &lt;div class="flex items-start gap-2 max-w-[80%]"&gt;
+      &lt;div class="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center text-[9px] font-mono font-bold"&gt;OP&lt;/div&gt;
+      &lt;div class="p-2 bg-zinc-950 border border-zinc-800 text-zinc-300 rounded-xl rounded-tl-none"&gt;Have you pushed the latest hash variables down to test environments?&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="flex items-start gap-2 max-w-[80%] ml-auto flex-row-reverse"&gt;
+      &lt;div class="w-6 h-6 rounded bg-violet-600 flex items-center justify-center text-[9px] font-mono font-bold text-white"&gt;ME&lt;/div&gt;
+      &lt;div class="p-2 bg-violet-600 text-white rounded-xl rounded-tr-none"&gt;Yes, deployment handshake confirmed on chain block #9012.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="p-2 bg-zinc-950 border-t border-zinc-800 flex items-center gap-2"&gt;
+    &lt;input type="text" placeholder="Transmit operational statement strings..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs outline-none focus:border-violet-500 text-white"&gt;
+    &lt;button class="px-3 py-1.5 bg-zinc-800 border border-zinc-700 text-xs text-white rounded-lg font-bold"&gt;Send&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section id="mega-footer" class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl overflow-hidden backdrop-blur-sm scroll-mt-20">
+      <div class="p-4 md:p-6 bg-zinc-900 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-display font-bold text-lg text-white">16. Mega Footer</h3>
+          <p class="text-xs text-zinc-400">High-fidelity 4-column structured index mapping legal and development assets tree links.</p>
+        </div>
+        <button onclick="toggleCodeBlock('src-mega-footer')" class="px-4 py-1.5 border border-zinc-700 bg-zinc-800/40 hover:bg-zinc-800 text-xs text-zinc-300 rounded-lg font-medium transition-all">
+          Show Component Source Code
+        </button>
+      </div>
+      <div class="p-6 md:p-8 bg-zinc-950/40">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-b border-zinc-900 pb-8 text-xs">
+          <div class="space-y-2.5">
+            <h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500">// PLATFORM ENVIRONMENT</h5>
+            <ul class="space-y-1.5 font-medium text-zinc-400">
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Neural Analytics API</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">WASM Runtimes Core</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Enterprise Routing Hub</a></li>
+            </ul>
+          </div>
+          <div class="space-y-2.5">
+            <h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500">// TECHNICAL RESOURCES</h5>
+            <ul class="space-y-1.5 font-medium text-zinc-400">
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Systems Git Repositories</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Mainnet Status Telemetry</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Whitepaper Architecture</a></li>
+            </ul>
+          </div>
+          <div class="space-y-2.5">
+            <h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500">// FRAMEWORK LAWS</h5>
+            <ul class="space-y-1.5 font-medium text-zinc-400">
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Zero Knowledge Privacy Clause</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Multi-Tenant SLA Standards</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Key Custody Declarations</a></li>
+            </ul>
+          </div>
+          <div class="space-y-2.5">
+            <h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500">// IDENTITY SYNDICATE</h5>
+            <ul class="space-y-1.5 font-medium text-zinc-400">
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Principal Node Engineers</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Global Media Kits Asset</a></li>
+              <li><a class="hover:text-violet-400 transition-colors cursor-pointer">Contact Secure Desk</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="max-w-4xl mx-auto pt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-zinc-600">
+          <div>&copy; 2026 DevSections Matrix Group. Absolute open source utility directives.</div>
+          <div class="flex items-center gap-4"><span>Status: Mainnet Valid</span><span>Network Hash: v3.1.0-alpha</span></div>
+        </div>
+      </div>
+      <div id="src-mega-footer" class="hidden bg-zinc-950 border-t border-zinc-800 p-5 font-mono text-xs text-zinc-300 overflow-x-auto max-h-96">
+        <pre><code>&lt;!-- 16. MEGA FOOTER --&gt;
+&lt;div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-b border-zinc-900 pb-8 text-xs"&gt;
+  &lt;div class="space-y-2.5"&gt;
+    &lt;h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500"&gt;// PLATFORM ENVIRONMENT&lt;/h5&gt;
+    &lt;ul class="space-y-1.5 font-medium text-zinc-400"&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Neural Analytics API&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;WASM Runtimes Core&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Enterprise Routing Hub&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="space-y-2.5"&gt;
+    &lt;h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500"&gt;// TECHNICAL RESOURCES&lt;/h5&gt;
+    &lt;ul class="space-y-1.5 font-medium text-zinc-400"&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Systems Git Repositories&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Mainnet Status Telemetry&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Whitepaper Architecture&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="space-y-2.5"&gt;
+    &lt;h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500"&gt;// FRAMEWORK LAWS&lt;/h5&gt;
+    &lt;ul class="space-y-1.5 font-medium text-zinc-400"&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Zero Knowledge Privacy Clause&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Multi-Tenant SLA Standards&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Key Custody Declarations&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="space-y-2.5"&gt;
+    &lt;h5 class="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500"&gt;// IDENTITY SYNDICATE&lt;/h5&gt;
+    &lt;ul class="space-y-1.5 font-medium text-zinc-400"&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Principal Node Engineers&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Global Media Kits Asset&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class="hover:text-violet-400 transition-colors cursor-pointer"&gt;Contact Secure Desk&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="max-w-4xl mx-auto pt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono text-zinc-600"&gt;
+  &lt;div&gt;&amp;copy; 2026 DevSections Matrix Group. Absolute open source utility directives.&lt;/div&gt;
+  &lt;div class="flex items-center gap-4"&gt;&lt;span&gt;Status: Mainnet Valid&lt;/span&gt;&lt;span&gt;Network Hash: v3.1.0-alpha&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Global function to show/hide source code block layouts natively
+    function toggleCodeBlock(elementId) {
+      const targetedContainer = document.getElementById(elementId);
+      if(targetedContainer.classList.contains('hidden')) {
+        targetedContainer.classList.remove('hidden');
+      } else {
+        targetedContainer.classList.add('hidden');
+      }
+    }
+
+    // Scroll Telemetry Matrix Controller Mappings 
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('scrollProgressBar');
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      bar.style.width = scrolled + "%";
+    });
+  </script>
+</body>
+</html>
